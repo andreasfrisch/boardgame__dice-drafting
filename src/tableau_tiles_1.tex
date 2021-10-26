@@ -1,0 +1,99 @@
+\documentclass[a4paper]{article}
+\input{libs.tex}
+\input{colors.tex}
+\input{tableau_tile_definitions.tex}
+
+\begin{document}
+\begin{center}
+\pagestyle{empty}
+\hyphenpenalty=10000
+
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{I}
+	\addDie{orange}
+	\costOne{orange}
+	\activatedEffect
+	\topPlacedDie{orange}{2+}
+	\bottomGainCubes{orange}{2}
+\end{tikzpicture}%
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{I}
+	\addDie{orange}
+	\costOne{teal}
+	\activatedEffect
+	\topPlacedDie{orange}{3+}
+	\bottomGainCubes{teal}{2}
+\end{tikzpicture}%
+\newline
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{I}
+	\addDie{teal}
+	\costOne{orange}
+	\activatedEffect
+	\topPlacedDie{teal}{3+}
+	\bottomGainCubes{orange}{2}
+\end{tikzpicture}%
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{I}
+	\addDie{teal}
+	\costOne{teal}
+	\activatedEffect
+	\topPlacedDie{teal}{2+}
+	\bottomGainCubes{teal}{2}
+\end{tikzpicture}%
+
+
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{I}
+	\addDie{teal}
+	\pointsOne
+	\costTwo{teal}{teal}
+	\activatedEffect
+	\topPlacedDie{teal}{3+}
+	\bottomGainCubes{teal}{2}
+\end{tikzpicture}%
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{I}
+	\addDie{orange}
+	\pointsOne
+	\costTwo{orange}{orange}
+	\activatedEffect
+	\topPlacedDie{orange}{3+}
+	\bottomGainCubes{orange}{2}
+\end{tikzpicture}%
+
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{I}
+	\addDie{teal}
+	\costTwo{teal}{orange}
+	\activatedEffect
+	\topPlacedDie{grey}{5+}
+	\bottomGainCubes{orange}{3}
+\end{tikzpicture}%
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{I}
+	\addDie{orange}
+	\costTwo{orange}{teal}
+	\activatedEffect
+	\topPlacedDie{grey}{5+}
+	\bottomGainCubes{teal}{3}
+\end{tikzpicture}%
+
+\end{center}
+\end{document}

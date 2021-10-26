@@ -1,0 +1,50 @@
+\documentclass[a4paper]{article}
+\input{libs.tex}
+\input{colors.tex}
+\input{tableau_tile_definitions.tex}
+
+\begin{document}
+\pagestyle{empty}
+\hyphenpenalty=10000
+\begin{center}
+
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\addDie{orange}
+	\activatedEffect
+	\topPlacedDie{orange}{1+}
+	\bottomGainCubes{orange}{1}
+\end{tikzpicture}%
+\begin{tikzpicture}
+	\tableautile
+	\addDie{teal}
+	\activatedEffect
+	\topPlacedDie{teal}{1+}
+	\bottomGainCubes{teal}{1}
+\end{tikzpicture}%
+\begin{tikzpicture}
+	\tableautile
+	\pointsOne
+\end{tikzpicture}%
+
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\activatedEffect
+	\topPlacedDie{white}{3+}
+	\bottomStartPlayer
+\end{tikzpicture}%
+\begin{tikzpicture}
+	\tableautile
+	\triggeredEffect
+	\topSpentCubes{gray}{2+}
+	\bottomGainCubes{gray}{1}
+\end{tikzpicture}%
+\begin{tikzpicture}
+	\tableautile
+	\pointsOne
+\end{tikzpicture}%
+
+\end{center}
+\end{document}

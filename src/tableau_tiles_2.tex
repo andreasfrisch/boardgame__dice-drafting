@@ -1,0 +1,123 @@
+\documentclass[a4paper]{article}
+\input{libs.tex}
+\input{colors.tex}
+\input{tableau_tile_definitions.tex}
+
+\begin{document}
+\begin{center}
+\pagestyle{empty}
+\hyphenpenalty=10000
+
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{II}
+	\pointsTwo
+	\costThree{teal}{teal}{orange}
+	\triggeredEffect
+	\topGainedCubes{teal}{X}
+	\bottomGainCubes{teal}{1}
+\end{tikzpicture}%
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{II}
+	\pointsTwo
+	\costThree{orange}{orange}{teal}
+	\triggeredEffect
+	\topGainedCubes{orange}{X}
+	\bottomGainCubes{orange}{1}
+\end{tikzpicture}%
+
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{II}
+	\costTwo{teal}{teal}
+	\pointsOne
+	\triggeredEffect
+	\topGainedCubes{teal}{X}
+	\bottomGainCubes{teal}{1}
+\end{tikzpicture}%
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{II}
+	\costTwo{orange}{orange}
+	\pointsOne
+	\triggeredEffect
+	\topGainedCubes{orange}{X}
+	\bottomGainCubes{orange}{1}
+\end{tikzpicture}%
+
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{II}
+	\costTwo{teal}{teal}
+	\pointsOne
+	\triggeredEffect
+	\topSpentCubes{teal}{X}
+	\bottomGainCubes{teal}{1}
+\end{tikzpicture}%
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{II}
+	\costTwo{orange}{orange}
+	\pointsOne
+	\triggeredEffect
+	\topSpentCubes{orange}{X}
+	\bottomGainCubes{orange}{1}
+\end{tikzpicture}%
+
+
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{II}
+	\addDie{pink}
+	\pointsOne
+	\costTwo{orange}{teal}
+	\activatedEffect
+	\topPlacedDie{gray}{3+}
+	\bottomGainCubes{pink}{1}
+\end{tikzpicture}%
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{II}
+	\addDie{pink}
+	\pointsOne
+	\costTwo{orange}{orange}
+	\activatedEffect
+	\topPlacedDie{pink}{1+}
+	\bottomGainCubes{pink}{1}
+\end{tikzpicture}%
+
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{II}
+	\addDie{pink}
+	\pointsOne
+	\costTwo{teal}{teal}
+	\activatedEffect
+	\topPlacedDie{pink}{1+}
+	\bottomGainCubes{pink}{1}
+\end{tikzpicture}%
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{II}
+	\costTwo{orange}{teal}
+	\pointsTwo
+	\triggeredEffect
+	\topPlacedDie{pink}{4+}
+	\bottomNewTile
+	\bottomNote{Discount 2 cubes}
+\end{tikzpicture}%
+
+
+\end{center}
+\end{document}

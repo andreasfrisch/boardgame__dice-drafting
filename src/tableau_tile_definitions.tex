@@ -1,0 +1,317 @@
+% Sizes
+\pgfmathsetmacro{\margin}{0.3}
+
+\pgfmathsetmacro{\tilewidth}{5}
+\pgfmathsetmacro{\tileheight}{7}
+\pgfmathsetmacro{\tileroofheight}{0.5*\tilewidth}
+\pgfmathsetmacro{\tiletextwidth}{\tilewidth-\margin}
+
+\pgfmathsetmacro{\topdieside}{0.3*\tileroofheight}
+\pgfmathsetmacro{\topabilitydieside}{1.3}
+
+\pgfmathsetmacro{\costareaheight}{1}
+\pgfmathsetmacro{\costcubesize}{0.5}
+\pgfmathsetmacro{\pointcirclesize}{0.2}
+
+\pgfmathsetmacro{\gaincubesize}{1}
+
+
+% Shapes
+% Defined with (0,0) in center of tile-trunk
+\def\shapeTableauTile{
+	(-0.5*\tilewidth,-0.5*\tileheight) --
+	(-0.5*\tilewidth,0.5*\tileheight) --
+	(0,0.5*\tileheight+\tileroofheight) --
+	(0.5*\tilewidth,0.5*\tileheight) --
+	(0.5*\tilewidth,-0.5*\tileheight) --
+	cycle
+}
+
+% Commands
+\newcommand{\tableautile}{
+	\draw[gray] \shapeTableauTile;
+	
+	\draw[gray]
+		(-0.5*\tilewidth+\margin, -0.5*\tileheight+\costareaheight) --
+		(0.5*\tilewidth-\margin,  -0.5*\tileheight+\costareaheight);
+
+	\draw[gray]
+		(-0.5*\tilewidth+\margin, 0.5*\tileheight) --
+		(0.5*\tilewidth-\margin,  0.5*\tileheight);
+}
+
+\newcommand{\tileLevel}[1]{
+	\node[text width=1.5cm] at (0.5*\tilewidth-0.75, 0.5*\tileheight-0.5) {
+		\begin{center}
+			\small #1
+		\end{center}
+	};
+}
+%%
+%% Icons
+%%
+\newcommand{\topCubeIcon}[1]{
+	\draw[color=black, fill=#1]
+		(-0.5*\gaincubesize,0.25*\tileheight-0.5*\gaincubesize) rectangle
+		( 0.5*\gaincubesize,0.25*\tileheight+0.5*\gaincubesize);
+}
+\newcommand{\topDieIcon}[1]{
+	\draw[black, fill=#1]
+		(-0.1-0.5*\topabilitydieside,1.5-0.5*\topabilitydieside) rectangle
+		(-0.1+0.5*\topabilitydieside,1.5+0.5*\topabilitydieside);
+	
+	\draw[black, fill=#1]
+		(-0.1+0.5*\topabilitydieside,1.5+0.5*\topabilitydieside) --
+		(-0.1+0.5*\topabilitydieside+0.3,1.5+0.5*\topabilitydieside+0.3) --
+		(-0.1+0.5*\topabilitydieside+0.3,1.5-0.5*\topabilitydieside+0.3) --
+		(-0.1+0.5*\topabilitydieside,1.5-0.5*\topabilitydieside) --
+		cycle;
+	
+	\draw[black, fill=#1]
+		(-0.1+0.5*\topabilitydieside,1.5+0.5*\topabilitydieside) --
+		(-0.1+0.5*\topabilitydieside+0.3,1.5+0.5*\topabilitydieside+0.3) --
+		(-0.1-0.5*\topabilitydieside+0.3,1.5+0.5*\topabilitydieside+0.3) --
+		(-0.1-0.5*\topabilitydieside,1.5+0.5*\topabilitydieside) --
+		cycle;
+}
+\newcommand{\topNewTile}{
+	\draw[color=black, fill=gray]
+		(0,2.5) --
+		(0.5,2) --
+		(0.5,0.6) --
+		(-0.5,0.6) --
+		(-0.5,2) --
+		cycle;
+	\node at (0.5, 1.7) {
+		\includegraphics[width=0.75cm]{icons/star_yellow.png}
+	};
+}
+
+\newcommand{\bottomCubeIcon}[1]{
+	\draw[color=black, fill=#1]
+		(-0.5*\gaincubesize,-0.15*\tileheight-0.5*\gaincubesize) rectangle
+		( 0.5*\gaincubesize,-0.15*\tileheight+0.5*\gaincubesize);
+}
+\newcommand{\bottomNewTile}{
+	\draw[color=black, fill=gray]
+		(0,-0.3) --
+		(0.5,-0.8) --
+		(0.5,-2.2) --
+		(-0.5,-2.2) --
+		(-0.5,-0.8) --
+		cycle;
+	\node at (0.5, -0.8) {
+		\includegraphics[width=0.75cm]{icons/star_yellow.png}
+	};
+}
+
+\newcommand{\topArrowDown}{
+	\node at (0, 1.1) {
+		\includegraphics[width=0.75cm]{icons/arrow_down_white.png}
+	};
+}
+\newcommand{\bottomArrowDown}{
+	\node at (0, -1.7) {
+		\includegraphics[width=0.75cm]{icons/arrow_down_white.png}
+	};
+}
+\newcommand{\topArrowUp}{
+	\node at (0, 1.1) {
+		\includegraphics[width=0.75cm]{icons/arrow_up_white.png}
+	};
+}
+\newcommand{\bottomArrowUp}{
+	\node at (0, -1.7) {
+		\includegraphics[width=0.75cm]{icons/arrow_up_white.png}
+	};
+}
+
+
+
+%%
+%% Top Die
+%%
+\newcommand{\addDie}[1]{
+	\draw[black, fill=#1]
+		(0,0.5*\tileheight+\tileroofheight-\margin) --
+		(0+\topdieside,0.5*\tileheight+\tileroofheight-\margin-\topdieside) --
+		(0+\topdieside,0.5*\tileheight+\tileroofheight-\margin-1.5*\topdieside) --
+		(0,0.5*\tileheight+\tileroofheight-\margin-0.5*\topdieside) --
+		cycle;
+
+	\draw[black, fill=#1]
+		(0,0.5*\tileheight+\tileroofheight-\margin) --
+		(0-\topdieside,0.5*\tileheight+\tileroofheight-\margin-\topdieside) --
+		(0-\topdieside,0.5*\tileheight+\tileroofheight-\margin-1.5*\topdieside) --
+		(0,0.5*\tileheight+\tileroofheight-\margin-0.5*\topdieside) --
+		cycle;
+
+	\draw[black, fill=#1]
+		(0,0.5*\tileheight+\tileroofheight-\margin-0.5*\topdieside) --
+		(0+\topdieside,0.5*\tileheight+\tileroofheight-\margin-1.5*\topdieside) --
+		(0,0.5*\tileheight+\tileroofheight-\margin-2.5*\topdieside) --
+		(0-\topdieside,0.5*\tileheight+\tileroofheight-\margin-1.5*\topdieside) --
+		cycle;
+}
+
+%%
+%% Points
+%%
+\newcommand{\pointsOne}{
+	\draw[color=black, fill=white!60!blue] (0,0.5*\tileheight) circle (\pointcirclesize); 
+}
+\newcommand{\pointsTwo}{
+	\filldraw[color=black, fill=white!60!blue] (-1.5*\pointcirclesize,0.5*\tileheight) circle (\pointcirclesize);
+	\filldraw[color=black, fill=white!60!blue] ( 1.5*\pointcirclesize,0.5*\tileheight) circle (\pointcirclesize);
+}
+\newcommand{\pointsThree}{
+	\filldraw[color=black, fill=white!60!blue] (-3*\pointcirclesize,0.5*\tileheight) circle (\pointcirclesize);
+	\filldraw[color=black, fill=white!60!blue] (0,0.5*\tileheight) circle (\pointcirclesize);
+	\filldraw[color=black, fill=white!60!blue] ( 3*\pointcirclesize,0.5*\tileheight) circle (\pointcirclesize);
+}
+\newcommand{\pointsFour}{
+	\filldraw[color=black, fill=white!60!blue] (-4.5*\pointcirclesize,0.5*\tileheight) circle (\pointcirclesize);
+	\filldraw[color=black, fill=white!60!blue] (-1.5*\pointcirclesize,0.5*\tileheight) circle (\pointcirclesize);
+	\filldraw[color=black, fill=white!60!blue] ( 1.5*\pointcirclesize,0.5*\tileheight) circle (\pointcirclesize);
+	\filldraw[color=black, fill=white!60!blue] ( 4.5*\pointcirclesize,0.5*\tileheight) circle (\pointcirclesize);
+}
+\newcommand{\pointsOnePer}[1]{
+	\draw[color=black, fill=white!60!blue] (-0.5,0) circle (\pointcirclesize); 
+	\draw[color=black] (-0.2,-0.5) -- (0.2,0.5);
+	\draw[color=black, fill=#1]
+		(  \costcubesize,-0.5*\costcubesize) rectangle
+		(2*\costcubesize, 0.5*\costcubesize);
+}
+\newcommand{\pointsTwoPer}[1]{
+	\draw[color=black, fill=white!60!blue] (-0.5,0) circle (\pointcirclesize); 
+	\draw[color=black, fill=white!60!blue] (-0.5-3*\pointcirclesize,0) circle (\pointcirclesize); 
+	\draw[color=black] (-0.2,-0.5) -- (0.2,0.5);
+	\draw[color=black, fill=#1]
+		(  \costcubesize,-0.5*\costcubesize) rectangle
+		(2*\costcubesize, 0.5*\costcubesize);
+}
+
+
+%%
+%% Costs
+%%
+\newcommand{\costOne}[1]{
+	\draw[color=black, fill=#1]
+		(-0.5*\costcubesize, -0.5*\tileheight+0.5*\costareaheight+0.5*\costcubesize) rectangle
+		( 0.5*\costcubesize, -0.5*\tileheight+0.5*\costareaheight-0.5*\costcubesize);
+}
+\newcommand{\costTwo}[2]{
+	\draw[color=black, fill=#1]
+		(-1.25*\costcubesize, -0.5*\tileheight+0.5*\costareaheight+0.5*\costcubesize) rectangle
+		(-0.25*\costcubesize, -0.5*\tileheight+0.5*\costareaheight-0.5*\costcubesize);
+	\draw[color=black, fill=#2]
+		(0.25*\costcubesize, -0.5*\tileheight+0.5*\costareaheight+0.5*\costcubesize) rectangle
+		(1.25*\costcubesize, -0.5*\tileheight+0.5*\costareaheight-0.5*\costcubesize);
+}
+\newcommand{\costThree}[3]{
+	\draw[color=black, fill=#1]
+		(-2*\costcubesize, -0.5*\tileheight+0.5*\costareaheight+0.5*\costcubesize) rectangle
+		(-1*\costcubesize, -0.5*\tileheight+0.5*\costareaheight-0.5*\costcubesize);
+	\draw[color=black, fill=#2]
+		(-0.5*\costcubesize, -0.5*\tileheight+0.5*\costareaheight+0.5*\costcubesize) rectangle
+		( 0.5*\costcubesize, -0.5*\tileheight+0.5*\costareaheight-0.5*\costcubesize);
+	\draw[color=black, fill=#3]
+		(1*\costcubesize, -0.5*\tileheight+0.5*\costareaheight+0.5*\costcubesize) rectangle
+		(2*\costcubesize, -0.5*\tileheight+0.5*\costareaheight-0.5*\costcubesize);
+}
+\newcommand{\costFour}[4]{
+	\draw[color=black, fill=#1]
+		(-2.75*\costcubesize, -0.5*\tileheight+0.5*\costareaheight+0.5*\costcubesize) rectangle
+		(-1.75*\costcubesize, -0.5*\tileheight+0.5*\costareaheight-0.5*\costcubesize);
+	\draw[color=black, fill=#2]
+		(-1.25*\costcubesize, -0.5*\tileheight+0.5*\costareaheight+0.5*\costcubesize) rectangle
+		(-0.25*\costcubesize, -0.5*\tileheight+0.5*\costareaheight-0.5*\costcubesize);
+	\draw[color=black, fill=#3]
+		(0.25*\costcubesize, -0.5*\tileheight+0.5*\costareaheight+0.5*\costcubesize) rectangle
+		(1.25*\costcubesize, -0.5*\tileheight+0.5*\costareaheight-0.5*\costcubesize);
+	\draw[color=black, fill=#4]
+		(1.75*\costcubesize, -0.5*\tileheight+0.5*\costareaheight+0.5*\costcubesize) rectangle
+		(2.75*\costcubesize, -0.5*\tileheight+0.5*\costareaheight-0.5*\costcubesize);
+}
+
+
+%%
+%% Effects
+%%
+\newcommand{\triggeredEffect}{
+	\node [text width=\tiletextwidth cm] at (0, 0.5*\tileheight-\margin) {
+		\begin{center}
+			\color{black}{\tiny \textbf WHEN}
+		\end{center}
+	};
+	\node [text width=\tiletextwidth cm] at (0, 0.5*\costareaheight) {
+		\begin{center}
+			\color{black}{\tiny \textbf THEN}
+		\end{center}
+	};
+}
+
+\newcommand{\activatedEffect}{
+	\node [text width=\tiletextwidth cm] at (0, 0.5*\tileheight-\margin) {
+		\begin{center}
+			\color{black}{\tiny \textbf PLACE}
+		\end{center}
+	};
+	\node [text width=\tiletextwidth cm] at (0, 0.5*\costareaheight) {
+		\begin{center}
+			\color{black}{\tiny \textbf THEN}
+		\end{center}
+	};
+}
+
+
+\newcommand{\topGainedCubes}[2]{
+	\topCubeIcon{#1}
+	\topArrowDown
+	\node [text width=2 cm] at (0, 0.3*\tileheight) {
+		\begin{center}
+			\Large \textbf #2
+		\end{center}
+	};	
+}
+\newcommand{\topSpentCubes}[2]{
+	\topCubeIcon{#1}
+	\topArrowUp
+	\node [text width=2 cm] at (0, 0.3*\tileheight) {
+		\begin{center}
+			\Large \textbf #2
+		\end{center}
+	};	
+}
+\newcommand{\topPlacedDie}[2]{
+	\topDieIcon{#1}
+	\node [text width=2 cm] at (-0.1, 0.3*\tileheight-0.3) {
+		\begin{center}
+			\Large \textbf #2
+		\end{center}
+	};	
+}
+
+\newcommand{\bottomGainCubes}[2]{
+	\bottomCubeIcon{#1}
+	\bottomArrowDown
+	\node [text width=2 cm] at (0, -0.1*\tileheight) {
+		\begin{center}
+			\Large \textbf #2
+		\end{center}
+	};
+}
+\newcommand{\bottomNote}[1]{
+	\node[text width=0.75*\tilewidth cm] at (0, -0.315*\tileheight) {
+		\begin{center}
+			\tiny #1
+		\end{center}
+	};
+}
+
+\newcommand{\bottomStartPlayer}{
+	\node at (0, -0.1*\tileheight) {
+		\includegraphics[width=1.5cm]{icons/meeple_king.png}
+	};
+	\bottomNote{Starting Player}
+}

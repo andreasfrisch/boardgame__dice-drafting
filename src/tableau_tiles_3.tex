@@ -1,0 +1,76 @@
+\documentclass[a4paper]{article}
+\input{libs.tex}
+\input{colors.tex}
+\input{tableau_tile_definitions.tex}
+
+\begin{document}
+\begin{center}
+\pagestyle{empty}
+\hyphenpenalty=10000
+
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{III}
+	\pointsFour
+	\costThree{teal}{orange}{pink}
+\end{tikzpicture}%
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{III}
+	\pointsOnePer{teal}
+	\costFour{teal}{teal}{orange}{pink}
+\end{tikzpicture}%
+
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{III}
+	\pointsOnePer{orange}
+	\costFour{orange}{orange}{teal}{pink}
+\end{tikzpicture}%
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{III}
+	\pointsTwoPer{pink}
+	\costFour{pink}{pink}{teal}{orange}
+\end{tikzpicture}%
+
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{III}
+	\costThree{teal}{orange}{pink}
+	\pointsThree
+	\triggeredEffect
+	\topGainedCubes{teal}{X}
+	\bottomGainCubes{teal}{2}
+\end{tikzpicture}%
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{III}
+	\costThree{teal}{orange}{pink}
+	\pointsThree
+	\triggeredEffect
+	\topGainedCubes{orange}{X}
+	\bottomGainCubes{orange}{2}
+\end{tikzpicture}%
+
+\noindent
+\begin{tikzpicture}
+	\tableautile
+	\tileLevel{III}
+	\costFour{teal}{teal}{orange}{orange}
+	\pointsThree
+	\triggeredEffect
+	\topSpentCubes{pink}{X}
+	\bottomGainCubes{pink}{1}
+\end{tikzpicture}%
+
+
+
+\end{center}
+\end{document}
